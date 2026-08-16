@@ -3,15 +3,16 @@ extends PathFollow2D
 
 @onready var stats = $Stats
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	move_enemy(delta)
 
 func move_enemy(delta):
 	progress_ratio += delta*speed 
+
+func take_damage(damageAmount : int):
+	stats.health -= damageAmount
+
+func _on_stats_health_changed(currentHP: int, maxHP: int) -> void:
+	if currentHP <= 0:
+		queue_free()

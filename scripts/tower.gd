@@ -2,6 +2,7 @@ extends Node2D
 
 @export var definedRange : float = 128
 @export var attacksPerSecond : float = 1
+@export var towerDamage : int = 1
 @onready var tower_range: CollisionShape2D = %TowerRange
 var canAttack : bool = true
 var attackSpeed : float
@@ -20,7 +21,7 @@ func _process(delta: float) -> void:
 func _attack():
 	if canAttack && !isEmpty(enemiesWithin):
 		canAttack = false
-		print("Attacked")
+		enemiesWithin[0].get_parent().take_damage(towerDamage)
 		await get_tree().create_timer(attackSpeed).timeout
 		canAttack = true
 

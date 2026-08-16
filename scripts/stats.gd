@@ -1,10 +1,11 @@
 extends Node
 
-@export var max_health : int = 100
+@export var max_health : int = 1
 @export var damage : int = 1
 
-@onready var health : int = max_health:
-	set = set_health
+signal healthChanged(currentHP : int, maxHP : int)
 
-func set_health(value):
-	health -= value
+var health : int = max_health:
+	set(value):
+		health = value
+		healthChanged.emit(health, max_health)

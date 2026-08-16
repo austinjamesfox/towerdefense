@@ -28,6 +28,10 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "Money: "
 
+[node name="RoundLabel" type="Label" parent="PanelContainer/HBoxContainer" unique_id=1712840282]
+layout_mode = 2
+text = "Round"
+
 [node name="HealthLabel" type="Label" parent="PanelContainer/HBoxContainer" unique_id=1721298835]
 unique_name_in_owner = true
 layout_mode = 2

@@ -22,3 +22,5 @@ texture = ExtResource("1_7p1mj")
 shape = SubResource("RectangleShape2D_003cx")
 
 [node name="Stats" parent="." unique_id=113779294 instance=ExtResource("3_4ra3w")]
+
+[connection signal="healthChanged" from="Stats" to="." method="_on_stats_health_changed"]
