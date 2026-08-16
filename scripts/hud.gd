@@ -1,7 +1,7 @@
-extends PathFollow2D
-@export var speed : float = 0
+extends Control
 
-@onready var stats = $Stats
+@onready var money_label: Label = %MoneyLabel
+@onready var health_label: Label = %HealthLabel
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,7 +11,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	move_enemy(delta)
+	pass
 
-func move_enemy(delta):
-	progress_ratio += delta*speed 
+
+func _on_game_manager_player_health_modified(playerHealth : int) -> void:
+	health_label.text = "Health: " + str(playerHealth)

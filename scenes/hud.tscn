@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://824cmlcaf1rc"]
+
+[ext_resource type="Script" uid="uid://d01at5yu3iekr" path="res://scripts/hud.gd" id="1_ahhtf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_toqtt"]
+
+[node name="HUD" type="Control" unique_id=19747335]
+custom_minimum_size = Vector2(1152, 648)
+propagate_maximum_size = true
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ahhtf")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1189399563]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_toqtt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=256249725]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="PanelContainer/HBoxContainer" unique_id=1649868688]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Money: "
+
+[node name="HealthLabel" type="Label" parent="PanelContainer/HBoxContainer" unique_id=1721298835]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Health: "
