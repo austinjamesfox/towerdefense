@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c3nfs3cbsudee" path="res://scripts/game_manager.gd" id="2_rt2n2"]
 [ext_resource type="PackedScene" uid="uid://dybj3c7qc8wi1" path="res://scenes/tower.tscn" id="3_7ykc4"]
 [ext_resource type="PackedScene" uid="uid://btlxln2da47c8" path="res://scenes/enemy_spawner.tscn" id="4_c16ls"]
+[ext_resource type="PackedScene" uid="uid://caljsike07l14" path="res://scenes/enemy.tscn" id="5_c16ls"]
 [ext_resource type="PackedScene" uid="uid://824cmlcaf1rc" path="res://scenes/hud.tscn" id="5_gubc5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_003cx"]
@@ -31,6 +32,7 @@ gameManager = NodePath("../GameManager")
 
 [node name="EnemySpawner" parent="EnemyManager" unique_id=791654599 node_paths=PackedStringArray("enemyPath", "gameManager") instance=ExtResource("4_c16ls")]
 enemyPath = NodePath("../EnemyPath")
+enemyOne = ExtResource("5_c16ls")
 gameManager = NodePath("../../GameManager")
 
 [node name="EnemyDestroyZone" type="Area2D" parent="EnemyManager" unique_id=1329111389]
