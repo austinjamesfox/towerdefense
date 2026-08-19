@@ -3,7 +3,7 @@ extends Control
 @onready var money_label: Label = %MoneyLabel
 @onready var health_label: Label = %HealthLabel
 
-
+signal playButtonPressedHUD(pressed)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -16,3 +16,7 @@ func _process(delta: float) -> void:
 
 func _on_game_manager_player_health_modified(playerHealth : int) -> void:
 	health_label.text = "Health: " + str(playerHealth)
+
+
+func _on_play_button_pressed() -> void:
+	playButtonPressedHUD.emit(true)

@@ -2,6 +2,9 @@ extends Node
 
 signal player_health_modified(healthValue : int)
 signal round_lost
+signal roundActive
+
+signal startRound
 
 var playerHealth : int = 100:
 	set(value):
@@ -20,3 +23,8 @@ func game_over():
 	round_lost.emit()
 	print("Game Over!")
 	Engine.time_scale = 0
+
+
+func _on_hud_play_button_pressed_hud(pressed: Variant) -> void:
+	startRound.emit()
+	roundActive.emit()

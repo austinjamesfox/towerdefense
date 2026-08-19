@@ -48,8 +48,12 @@ curve = SubResource("Curve2D_7ykc4")
 [node name="Tower" parent="TowerManager" unique_id=43475305 instance=ExtResource("3_7ykc4")]
 z_index = 3
 position = Vector2(46, 592)
+towerDamage = 0
 
 [node name="HUD" parent="." unique_id=19747335 instance=ExtResource("5_gubc5")]
 
 [connection signal="player_health_modified" from="GameManager" to="HUD" method="_on_game_manager_player_health_modified"]
+[connection signal="roundActive" from="GameManager" to="EnemyManager/EnemySpawner" method="_on_game_manager_round_active"]
+[connection signal="startRound" from="GameManager" to="EnemyManager/EnemySpawner" method="_on_game_manager_start_round"]
 [connection signal="area_entered" from="EnemyManager/EnemyDestroyZone" to="EnemyManager" method="_on_enemy_destroy_zone_area_entered"]
+[connection signal="playButtonPressedHUD" from="HUD" to="GameManager" method="_on_hud_play_button_pressed_hud"]

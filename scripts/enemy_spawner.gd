@@ -8,7 +8,9 @@ extends Node2D
 
 @export var gameManager : Node
 
-var readyToSpawn : bool = false
+var spawningEnemies : bool = false
+
+var roundActive : bool = false
 
 @onready var rounds = {
 	1: [
@@ -19,15 +21,15 @@ var readyToSpawn : bool = false
 		},
 		{
 			"enemy": enemyOne,
-			"quantity": 5,
-			"spawn_rate": 0.5
+			"quantity": 25,
+			"spawn_rate": 0.25
 		}
 		]
 }
 
-func _on_timer_timeout() -> void:
+#func _on_timer_timeout() -> void:
 	# Spawn Enemy
-	round_spawn()
+	#round_spawn()
 	#var enemy = enemy_scene.instantiate()
 	#enemyPath.add_child(enemy)
 	#gameManager.player_lose_health(10)
@@ -40,8 +42,10 @@ func round_spawn():
 		for i in range(spawnGroup["quantity"]):
 			var enemy = spawnGroup["enemy"].instantiate()
 			enemyPath.add_child(enemy)
-			createTimer(spawnGroup["spawn_rate"])
-			
+			var spawnTimer = createTimer(spawnGroup["spawn_rate"])
+			await spawnTimer.timeout
+			spawnTimer.queue_free()
+		roundActive = false
 			
 		
 func createTimer(spawnRate):
@@ -50,4 +54,14 @@ func createTimer(spawnRate):
 	spawnTimer.one_shot = true
 	add_child(spawnTimer)
 	spawnTimer.start()
+	return spawnTimer
 	
+
+
+func _on_game_manager_round_active() -> void:
+	roundActive = true
+
+
+func _on_game_manager_start_round() -> void:
+	if !roundActive:
+		round_spawn()
