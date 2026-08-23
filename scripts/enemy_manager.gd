@@ -19,3 +19,6 @@ func enemyPathComplete(enemy : Area2D):
 func addEnemiesActive(enemy):
 	activeEnemies.append(enemy)
 	print("Added "+ str(enemy))
+
+#create a signal in the enemyspawner that emits whenever an enemy is spawned so this script checks how many enemies (class) are in the scene
+#also create a signal that emits when enemies die so it can be checked then also 
