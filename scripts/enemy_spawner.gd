@@ -8,6 +8,8 @@ extends Node2D
 
 @export var gameManager : Node
 
+@export var enemyManager : Node
+
 var spawningEnemies : bool = false
 
 var roundActive : bool = false
@@ -54,11 +56,11 @@ func round_spawn():
 		for i in range(spawnGroup["quantity"]):
 			var enemy = spawnGroup["enemy"].instantiate()
 			enemyPath.add_child(enemy)
+			enemyManager.addEnemiesActive(enemy)
 			var spawnTimer = createTimer(spawnGroup["spawn_rate"])
 			await spawnTimer.timeout
 			spawnTimer.queue_free()
 	roundActive = false
-	print(currentRound)
 	gameManager.next_round(1)
 	
 func createTimer(spawnRate):

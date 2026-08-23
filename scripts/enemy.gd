@@ -1,4 +1,5 @@
 extends PathFollow2D
+class_name Enemy
 @export var speed : float = 0
 
 @onready var stats = $Stats

@@ -27,3 +27,4 @@ func _on_play_button_pressed() -> void:
 
 func _on_game_manager_next_round(nextRound: int) -> void:
 	currentRound = nextRound
+	round_label.text = "Round: " + str(currentRound)

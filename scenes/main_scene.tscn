@@ -30,10 +30,11 @@ script = ExtResource("2_rt2n2")
 script = ExtResource("2_pu3yx")
 gameManager = NodePath("../GameManager")
 
-[node name="EnemySpawner" parent="EnemyManager" unique_id=791654599 node_paths=PackedStringArray("enemyPath", "gameManager") instance=ExtResource("4_c16ls")]
+[node name="EnemySpawner" parent="EnemyManager" unique_id=791654599 node_paths=PackedStringArray("enemyPath", "gameManager", "enemyManager") instance=ExtResource("4_c16ls")]
 enemyPath = NodePath("../EnemyPath")
 enemyOne = ExtResource("5_c16ls")
 gameManager = NodePath("../../GameManager")
+enemyManager = NodePath("..")
 
 [node name="EnemyDestroyZone" type="Area2D" parent="EnemyManager" unique_id=1329111389]
 
