@@ -52,6 +52,8 @@ towerDamage = 0
 
 [node name="HUD" parent="." unique_id=19747335 instance=ExtResource("5_gubc5")]
 
+[connection signal="nextRound" from="GameManager" to="EnemyManager/EnemySpawner" method="_on_game_manager_next_round"]
+[connection signal="nextRound" from="GameManager" to="HUD" method="_on_game_manager_next_round"]
 [connection signal="player_health_modified" from="GameManager" to="HUD" method="_on_game_manager_player_health_modified"]
 [connection signal="roundActive" from="GameManager" to="EnemyManager/EnemySpawner" method="_on_game_manager_round_active"]
 [connection signal="startRound" from="GameManager" to="EnemyManager/EnemySpawner" method="_on_game_manager_start_round"]

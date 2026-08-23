@@ -24,6 +24,18 @@ var roundActive : bool = false
 			"quantity": 25,
 			"spawn_rate": 0.25
 		}
+		],
+	2: [
+		{
+			"enemy": enemyOne,
+			"quantity": 50,
+			"spawn_rate": 0.1
+		},
+		{
+			"enemy": enemyOne,
+			"quantity": 25,
+			"spawn_rate": 0.25
+		}
 		]
 }
 
@@ -45,9 +57,10 @@ func round_spawn():
 			var spawnTimer = createTimer(spawnGroup["spawn_rate"])
 			await spawnTimer.timeout
 			spawnTimer.queue_free()
-		roundActive = false
-			
-		
+	roundActive = false
+	print(currentRound)
+	gameManager.next_round(1)
+	
 func createTimer(spawnRate):
 	var spawnTimer = Timer.new()
 	spawnTimer.wait_time = spawnRate
@@ -65,3 +78,7 @@ func _on_game_manager_round_active() -> void:
 func _on_game_manager_start_round() -> void:
 	if !roundActive:
 		round_spawn()
+
+
+func _on_game_manager_next_round(nextRound: int) -> void:
+	currentRound = nextRound
