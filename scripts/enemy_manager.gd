@@ -8,7 +8,6 @@ signal allEnemiesDead(dead: bool)
 var activeEnemies : int = 0:
 	set(value):
 		activeEnemies = value
-		print(activeEnemies)
 		if (activeEnemies == 0 && !enemySpawner.currentlySpawning):
 			allEnemiesDead.emit(true)
 	get:

@@ -11,7 +11,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ahhtf")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1189399563]
+[node name="TopBar" type="PanelContainer" parent="." unique_id=1189399563]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -19,25 +19,55 @@ offset_bottom = 23.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_toqtt")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=256249725]
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar" unique_id=256249725]
 layout_mode = 2
 
-[node name="MoneyLabel" type="Label" parent="PanelContainer/HBoxContainer" unique_id=1649868688]
+[node name="MoneyLabel" type="Label" parent="TopBar/HBoxContainer" unique_id=1649868688]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Money: "
 
-[node name="RoundLabel" type="Label" parent="PanelContainer/HBoxContainer" unique_id=1712840282]
+[node name="RoundLabel" type="Label" parent="TopBar/HBoxContainer" unique_id=1712840282]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Round: 1"
 
-[node name="HealthLabel" type="Label" parent="PanelContainer/HBoxContainer" unique_id=1721298835]
+[node name="HealthLabel" type="Label" parent="TopBar/HBoxContainer" unique_id=1721298835]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "Health: 100"
+
+[node name="TowerShop" type="PanelContainer" parent="." unique_id=4785368]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -109.0
+offset_top = -31.0
+offset_right = 109.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TowerShop" unique_id=877556888]
+layout_mode = 2
+
+[node name="Tower 1" type="Button" parent="TowerShop/HBoxContainer2" unique_id=93753941]
+layout_mode = 2
+text = "Tower 1
+"
+
+[node name="Tower 2" type="Button" parent="TowerShop/HBoxContainer2" unique_id=790383928]
+layout_mode = 2
+text = "Tower 2"
+
+[node name="Tower 3" type="Button" parent="TowerShop/HBoxContainer2" unique_id=699830958]
+layout_mode = 2
+text = "Tower 3
+"
 
 [node name="PlayButton" type="Button" parent="." unique_id=1123778431]
 layout_mode = 1
@@ -46,8 +76,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = -8.0
+offset_left = -47.0
+offset_top = -31.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "PLAY"

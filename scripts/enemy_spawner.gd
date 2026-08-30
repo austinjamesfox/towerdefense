@@ -70,7 +70,6 @@ func createTimer(spawnRate):
 	add_child(spawnTimer)
 	spawnTimer.start()
 	return spawnTimer
-	
 
 
 func _on_game_manager_round_active(active : bool) -> void:
