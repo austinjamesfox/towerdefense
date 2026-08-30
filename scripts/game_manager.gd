@@ -1,11 +1,14 @@
 extends Node
 
+@export var enemyManager : Node
 signal player_health_modified(healthValue : int)
 signal round_lost
-signal roundActive
+signal roundActive(active : bool)
 signal nextRound(nextRound : int)
 
 signal startRound
+
+var currentlySpawning : bool = false
 
 var playerHealth : int = 100:
 	set(value):
@@ -19,12 +22,9 @@ var playerHealth : int = 100:
 
 var currentRound : int = 1:
 	set(value):
-		print("initial current round is " + str(currentRound))
 		currentRound = value
 		nextRound.emit(currentRound)
-		print("Set round to " + str(currentRound))
 	get:
-		print("Getter CurrentRound = "+ str(currentRound))
 		return currentRound
 
 func player_lose_health(healthLost : int):
@@ -40,5 +40,17 @@ func next_round(round):
 	nextRound.emit(currentRound)
 
 func _on_hud_play_button_pressed_hud(pressed: Variant) -> void:
-	startRound.emit()
-	roundActive.emit()
+	if (!currentlySpawning && enemyManager.activeEnemies == 0):
+		startRound.emit()
+		roundActive.emit(true)
+
+
+func _on_enemy_spawner_enemies_spawning(spawning: bool) -> void:
+	currentlySpawning = spawning
+	print("Spawning: " + str(spawning))
+
+
+func _on_enemy_manager_all_enemies_dead(dead : bool) -> void:
+	if (!currentlySpawning):
+		roundActive.emit(false)
+		next_round(1)

@@ -10,9 +10,16 @@ extends Node2D
 
 @export var enemyManager : Node
 
-var spawningEnemies : bool = false
-
 var roundActive : bool = false
+
+signal enemiesSpawning(spawning : bool)
+
+var currentlySpawning : bool = false:
+	set(value):
+		enemiesSpawning.emit(value)
+	get:
+		return currentlySpawning
+
 
 @onready var rounds = {
 	1: [
@@ -41,27 +48,20 @@ var roundActive : bool = false
 		]
 }
 
-#func _on_timer_timeout() -> void:
-	# Spawn Enemy
-	#round_spawn()
-	#var enemy = enemy_scene.instantiate()
-	#enemyPath.add_child(enemy)
-	#gameManager.player_lose_health(10)
-
 # The current round variable should be managed in the GameManager instead. This is only temp.
 @export var currentRound = 1
 
 func round_spawn():
+	currentlySpawning = true
 	for spawnGroup in rounds[currentRound]:
 		for i in range(spawnGroup["quantity"]):
 			var enemy = spawnGroup["enemy"].instantiate()
 			enemyPath.add_child(enemy)
-			enemyManager.addEnemiesActive(enemy)
+			enemyManager.addEnemyActive(enemy)
 			var spawnTimer = createTimer(spawnGroup["spawn_rate"])
 			await spawnTimer.timeout
 			spawnTimer.queue_free()
-	roundActive = false
-	gameManager.next_round(1)
+	currentlySpawning = false
 	
 func createTimer(spawnRate):
 	var spawnTimer = Timer.new()
@@ -73,13 +73,15 @@ func createTimer(spawnRate):
 	
 
 
-func _on_game_manager_round_active() -> void:
-	roundActive = true
+func _on_game_manager_round_active(active : bool) -> void:
+	roundActive = active
 
 
 func _on_game_manager_start_round() -> void:
-	if !roundActive:
+	if (!roundActive && !currentlySpawning):
 		round_spawn()
+	else:
+		print("Round Active: " + str(roundActive) + "\nCurrently Spawning: " + str(currentlySpawning))
 
 
 func _on_game_manager_next_round(nextRound: int) -> void:

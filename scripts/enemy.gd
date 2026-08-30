@@ -16,4 +16,8 @@ func take_damage(damageAmount : int):
 
 func _on_stats_health_changed(currentHP: int, maxHP: int) -> void:
 	if currentHP <= 0:
+		get_parent().get_parent().removeEnemyActive(self)
 		queue_free()
+
+func instaDie():
+	stats.health = 0
