@@ -6,8 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_003cx"]
 radius = 128.0
 
-[node name="Tower" type="Node2D" unique_id=43475305]
+[node name="Tower" type="Node2D" unique_id=43475305 node_paths=PackedStringArray("towerSprite")]
 script = ExtResource("1_ay4al")
+towerSprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=883259480]
 texture = ExtResource("1_2x682")

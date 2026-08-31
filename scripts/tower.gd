@@ -3,10 +3,21 @@ extends Node2D
 @export var definedRange : float = 128
 @export var attacksPerSecond : float = 1
 @export var towerDamage : int = 1
+@export var towerSprite : Sprite2D
 @onready var tower_range: CollisionShape2D = %TowerRange
 var canAttack : bool = true
 var attackSpeed : float
 var enemiesWithin : Array[Area2D]
+
+#var is_dragging : bool = false
+
+#func _input(event):
+	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		#if event.pressed:
+			#if towerSprite.get_rect().has_point(to_local(event.position)):
+				#print("Click Down")
+		#else:
+			#print("Click Up")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
