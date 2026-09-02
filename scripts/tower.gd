@@ -8,16 +8,22 @@ extends Node2D
 var canAttack : bool = true
 var attackSpeed : float
 var enemiesWithin : Array[Area2D]
+@export var dragSpeed : int = 2
 
-#var is_dragging : bool = false
+var is_dragging : bool = false
 
-#func _input(event):
-	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		#if event.pressed:
-			#if towerSprite.get_rect().has_point(to_local(event.position)):
-				#print("Click Down")
-		#else:
-			#print("Click Up")
+func _physics_process(delta):
+	if is_dragging:
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "position", get_global_mouse_position(), dragSpeed * delta)
+
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			if towerSprite.get_rect().has_point(to_local(event.position)):
+				is_dragging = true
+		else:
+			is_dragging = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
