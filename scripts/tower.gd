@@ -12,8 +12,10 @@ var enemiesWithin : Array[Area2D]
 
 var is_dragging : bool = false
 
+var isPlaced : bool = false
+
 func _physics_process(delta):
-	if is_dragging:
+	if is_dragging && !isPlaced:
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "position", get_global_mouse_position(), dragSpeed * delta)
 
@@ -23,6 +25,8 @@ func _input(event):
 			if towerSprite.get_rect().has_point(to_local(event.position)):
 				is_dragging = true
 		else:
+			if towerSprite.get_rect().has_point(to_local(event.position)):
+				isPlaced = true
 			is_dragging = false
 
 # Called when the node enters the scene tree for the first time.
