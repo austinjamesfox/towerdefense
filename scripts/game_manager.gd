@@ -39,6 +39,9 @@ func next_round(round):
 	currentRound += round
 	nextRound.emit(currentRound)
 
+func _process(delta: float) -> void:
+	print(enemyManager.activeEnemies )
+
 func _on_hud_play_button_pressed_hud(pressed: Variant) -> void:
 	if (!currentlySpawning && enemyManager.activeEnemies == 0):
 		startRound.emit()

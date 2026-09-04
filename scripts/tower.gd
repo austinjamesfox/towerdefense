@@ -1,4 +1,5 @@
 extends Node2D
+class_name TowerClass
 
 @export var definedRange : float = 128
 @export var attacksPerSecond : float = 1

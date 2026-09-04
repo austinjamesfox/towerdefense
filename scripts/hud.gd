@@ -8,6 +8,9 @@ var currentRound : int = 1
 
 signal playButtonPressedHUD(pressed)
 # Called when the node enters the scene tree for the first time.
+
+signal tower1Pressed()
+
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -28,3 +31,7 @@ func _on_play_button_pressed() -> void:
 func _on_game_manager_next_round(nextRound: int) -> void:
 	currentRound = nextRound
 	round_label.text = "Round: " + str(currentRound)
+
+
+func _on_tower_1_button_down() -> void:
+	tower1Pressed.emit()

@@ -82,4 +82,5 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "PLAY"
 
+[connection signal="button_down" from="TowerShop/HBoxContainer2/Tower 1" to="." method="_on_tower_1_button_down"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

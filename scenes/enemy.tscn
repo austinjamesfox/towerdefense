@@ -13,6 +13,7 @@ script = ExtResource("1_md0e3")
 speed = 0.1
 
 [node name="Area2D" type="Area2D" parent="." unique_id=578145629]
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1279966387]
 z_index = 3

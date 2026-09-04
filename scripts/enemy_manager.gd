@@ -7,7 +7,7 @@ signal allEnemiesDead(dead: bool)
 
 var activeEnemies : int = 0:
 	set(value):
-		activeEnemies = value
+		activeEnemies = clamp(value, 0, 100000000)
 		if (activeEnemies == 0 && !enemySpawner.currentlySpawning):
 			allEnemiesDead.emit(true)
 	get:
