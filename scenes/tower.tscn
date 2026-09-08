@@ -2,12 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://dbr4ooc01wg81" path="res://assets/tower.png" id="1_2x682"]
 [ext_resource type="Script" uid="uid://bydtfulpdv4ee" path="res://scripts/tower.gd" id="1_ay4al"]
+[ext_resource type="PackedScene" uid="uid://4e5nd0ghd8kg" path="res://scenes/projectile.tscn" id="2_ktxwe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_003cx"]
 radius = 128.0
 
 [node name="Tower" type="Node2D" unique_id=43475305 node_paths=PackedStringArray("towerSprite")]
 script = ExtResource("1_ay4al")
+projectileScene = ExtResource("2_ktxwe")
 towerSprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=883259480]

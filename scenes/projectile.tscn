@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://4e5nd0ghd8kg"]
+
+[ext_resource type="Texture2D" uid="uid://cpx417f6qhunq" path="res://assets/tower_projectile.png" id="1_c8fcr"]
+[ext_resource type="Script" uid="uid://hmxnmuet5d05" path="res://scripts/projectile.gd" id="1_q3m7n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_003cx"]
+radius = 6.25
+
+[node name="Projectile" type="Area2D" unique_id=460819701]
+z_index = 3
+script = ExtResource("1_q3m7n")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=685372397]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_c8fcr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=520987639]
+shape = SubResource("CircleShape2D_003cx")
