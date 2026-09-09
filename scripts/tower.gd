@@ -46,8 +46,11 @@ func _process(delta: float) -> void:
 func _attack(delta):
 	if canAttack && !isEmpty(enemiesWithin):
 		canAttack = false
-		fireProjectile(delta)
-		enemiesWithin[0].get_parent().take_damage(towerDamage)
+		# The next line will make it so that the tower prioritizes the last enemy
+		#fireProjectile(enemiesWithin[enemiesWithin.size()-1].get_parent().position)
+		# The next line will make it so that the tower prioritizes the first enemy
+		fireProjectile(enemiesWithin[0].get_parent())
+		#enemiesWithin[0].get_parent().take_damage(towerDamage)
 		await get_tree().create_timer(attackSpeed).timeout
 		canAttack = true
 
@@ -63,10 +66,10 @@ func isEmpty(array : Array):
 	else:
 		return false
 
-func fireProjectile(delta):
+func fireProjectile(target):
 	var projectile = projectileScene.instantiate()
 	self.add_child(projectile)
-	projectile.move(Vector2(10,10), projectileSpeed, delta)
+	projectile.target = target.position
 	#print(projectile.position)
 	#projectile.position = self.position
 	#print(projectile.position)

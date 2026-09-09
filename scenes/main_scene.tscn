@@ -40,7 +40,8 @@ gameManager = NodePath("../../GameManager")
 enemyManager = NodePath("..")
 
 [node name="EnemyDestroyZone" type="Area2D" parent="EnemyManager" unique_id=1329111389]
-collision_mask = 2
+collision_layer = 8
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyManager/EnemyDestroyZone" unique_id=1101133288]
 shape = SubResource("WorldBoundaryShape2D_003cx")
@@ -55,6 +56,7 @@ tower1 = ExtResource("3_7ykc4")
 [node name="Tower" parent="TowerManager" unique_id=43475305 instance=ExtResource("3_7ykc4")]
 z_index = 3
 position = Vector2(46, 592)
+attacksPerSecond = 2.0
 
 [node name="HUD" parent="." unique_id=19747335 instance=ExtResource("5_gubc5")]
 

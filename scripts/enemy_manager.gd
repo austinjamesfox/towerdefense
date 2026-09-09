@@ -15,7 +15,11 @@ var activeEnemies : int = 0:
 
 
 func _on_enemy_destroy_zone_area_entered(area: Area2D) -> void:
-	enemyPathComplete(area)
+	if area is Projectile:
+		print("Projectile")
+		area.queue_free()
+	else:
+		enemyPathComplete(area)
 
 func enemyPathComplete(enemy : Area2D):
 	var currentEnemy = enemy.get_parent()
